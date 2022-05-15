@@ -15,13 +15,14 @@ document.getElementById("generate-btn").addEventListener("click", () => {
   const showPin = pinGenerateField.value;
   pinGenerateField.value = getPin();
 });
-// pin matcher keypad click handler by using className and for..of loops
+// pin matcher keypad click handler by using className and for..of loops for interactive
 const button = document.getElementsByClassName("button");
 for (const btn of button) {
   btn.addEventListener("click", (e) => {
     const buttonValue = e.target.innerText;
     const calcField = document.getElementById("calcField");
-    if (isNaN(buttonValue)) {      // if click element was not a number than this happend and if this was 'C' than it will be clear the output field 
+    if (isNaN(buttonValue)) {
+      // if click element was not a number than this happend and if this was 'C' than it will be clear the output field
       if (buttonValue == "C") {
         calcField.value = "";
       }
@@ -31,3 +32,24 @@ for (const btn of button) {
     }
   });
 }
+
+// we want to hidden two notification by using both className for..of loop and display=none: 
+const notification = document.getElementsByClassName("notify");
+for (const notify of notification) {
+  notify.style.display = "none";
+}
+
+// 'click' handler for "submit button" when generated pin and typed pin same or not and fiven notification:
+document.getElementById("submit-button").addEventListener("click", () => {
+  const generatedPin = document.getElementById("generateField").value;
+  const typedPin = document.getElementById("calcField").value;
+  const notifyTwo = document.getElementById("notifyTwo"); // catch the notification by using id 
+  const notifyOne = document.getElementById("notifyOne"); // catch the notification by using id
+  if (generatedPin == typedPin) {
+    notifyTwo.style.display = "block";
+    notifyOne.style.display = "none"  // for clear the notification alert
+  } else {
+    notifyOne.style.display = "block";
+    notifyTwo.style.display = "none"; // for clear the notification alert
+  }
+});
