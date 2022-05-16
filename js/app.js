@@ -24,7 +24,7 @@ for (const btn of button) {
     if (isNaN(buttonValue)) {
       // if click element was not a number than this happend and if this was 'C' than it will be clear the output field
       if (buttonValue == "C") {
-        calcField.value = "";
+        calcField.value = "";       // empty string for time to time clear the field
       }
     } else {
       const previousValue = calcField.value;
@@ -39,14 +39,14 @@ for (const notify of notification) {
   notify.style.display = "none";
 }
 
-// 'click' handler for "submit button" when generated pin and typed pin same or not and fiven notification:
+// 'click' handler for "submit button" when generated pin and typed pin same or not:
 document.getElementById("submit-button").addEventListener("click", () => {
   const generatedPin = document.getElementById("generateField").value;
   const typedPin = document.getElementById("calcField").value;
   const notifyTwo = document.getElementById("notifyTwo"); // catch the notification by using id 
   const notifyOne = document.getElementById("notifyOne"); // catch the notification by using id
   if (generatedPin == typedPin) {
-    notifyTwo.style.display = "block";
+    notifyTwo.style.display = "block"; // only show the notifyTwo and 
     notifyOne.style.display = "none"  // for clear the notification alert
   } else {
     notifyOne.style.display = "block";
